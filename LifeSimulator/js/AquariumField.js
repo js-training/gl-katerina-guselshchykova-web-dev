@@ -1,59 +1,6 @@
 "use strict";
 var AquariumField = function (aquariumGrid) {
-        var tbody = dom("TBODY", {"class": "gameField"});
-        this.squares = [];
-    //    this.food = {};
-  //      this.player = new Snake();
-   //     this.playerPos = this.player.head;
 
-//    var characters = [];
-//    var endOfLine = this.grid.width - 1;
-//    this.grid.each(function(point, value) {
-//        characters.push(characterFromElement(value));
-//        if (point.x == endOfLine)
-//            characters.push("\n");
-//    });
-//    return characters.join("");
-//};
-        var endOfLine = aquariumGrid.width - 1;
-
-       console.log("W = " + aquariumGrid.width + " h = " + aquariumGrid.height);
-        for (var y = 0; y < aquariumGrid.height; y++) {
-            //var line = aquariumGrid[y];
-            var tableRow = dom("TR");
-            var squareRow = [];
-            for (var x = 0; x < aquariumGrid.width; x++) {
-                var tableCell = dom("TD");
-                tableRow.appendChild(tableCell);
-                var square = new Square(characterFromElement(aquariumGrid.valueAt(new Point(x, y))), tableCell);
-                squareRow.push(square);
-//                if (square.hasFood()) {
-//                    this.foodPos = new Point(x, y);
-//                }
-            }
-            tbody.appendChild(tableRow);
-            this.squares.push(squareRow);
-        }
-
-        this.table = dom("TABLE", {"class": "gameField"}, tbody);
-        this.score = dom("DIV", null, "...");
-
-        this.getSquare =  function(position) {
-            return this.squares[position.y][position.x];
-        }
-        this.place =  function(where) {
-            where.appendChild(this.score);
-            where.appendChild(this.table);
-        };
-};
-
-AquariumField.place = function(where) {
-    where.appendChild(this.score);
-    where.appendChild(this.table);
-};
-AquariumField.remove = function() {
-    removeElement(this.score);
-    removeElement(this.table);
 };
 
 AquariumField.move = function(direction) {

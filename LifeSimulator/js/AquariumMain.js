@@ -35,21 +35,20 @@ var aquariumDefault =
 
 // game logic
 function Aquarium(plan) {
-       var grid = new Grid(plan[0].length, plan.length);
+       this.grid = new Grid(plan[0].length, plan.length);
        for (var y = 0; y < plan.length; y++) {
            var line = plan[y];
-           console.log("line = " + line);
            for (var x = 0; x < line.length; x++) {
-               grid.setValueAt(new Point(x, y),
+               this.grid.setValueAt(new Point(x, y),
                    elementFromCharacter(line.charAt(x)));
            }
        }
-       this.grid = grid;
+      // this.grid = grid;
    }
 
 Aquarium.prototype.render = function(place){
-    this.field = new AquariumField(this.grid);
-    this.field.place(place);
+    this.grid.render();
+    this.grid.place(place);
 }
 
 function elementFromCharacter(character) {

@@ -26,3 +26,36 @@ Grid.prototype.each = function(action) {
         }
     }
 };
+
+Grid.prototype.render = function(){
+    var tbody = dom("TBODY", {"class": "gameField"});
+    this.squares = [];
+    var endOfLine =  this.width - 1;
+
+    for (var y = 0; y <  this.height; y++) {
+        var tableRow = dom("TR");
+        var squareRow = [];
+        for (var x = 0; x < this.width; x++) {
+            var tableCell = dom("TD");
+            tableRow.appendChild(tableCell);
+            var square = new Square(characterFromElement(this.valueAt(new Point(x, y))), tableCell);
+            squareRow.push(square);
+        }
+        tbody.appendChild(tableRow);
+        this.squares.push(squareRow);
+    }
+
+    this.table = dom("TABLE", {"class": "gameField"}, tbody);
+};
+
+Grid.prototype.place = function(where) {
+    where.appendChild(this.table);
+};
+
+Grid.prototype.remove = function() {
+   removeElement(this.table);
+};
+
+function characterFromElement(element) {
+    return (element == undefined) ? " " : element.character;
+};
