@@ -1,19 +1,30 @@
 "use strict";
-var AquariumField = function (aquariumPlan) {
+var AquariumField = function (aquariumGrid) {
         var tbody = dom("TBODY", {"class": "gameField"});
         this.squares = [];
     //    this.food = {};
   //      this.player = new Snake();
    //     this.playerPos = this.player.head;
 
-        for (var y = 0; y < aquariumPlan.length; y++) {
-            var line = aquariumPlan[y];
+//    var characters = [];
+//    var endOfLine = this.grid.width - 1;
+//    this.grid.each(function(point, value) {
+//        characters.push(characterFromElement(value));
+//        if (point.x == endOfLine)
+//            characters.push("\n");
+//    });
+//    return characters.join("");
+//};
+        var endOfLine = aquariumGrid.width - 1;
+
+        for (var y = 0; y < aquariumGrid.height; y++) {
+            //var line = aquariumGrid[y];
             var tableRow = dom("TR");
             var squareRow = [];
-            for (var x = 0; x < line.length; x++) {
+            for (var x = 0; x < aquariumGrid.width; x++) {
                 var tableCell = dom("TD");
                 tableRow.appendChild(tableCell);
-                var square = new Square(line.charAt(x), tableCell);
+                var square = new Square(characterFromElement(aquariumGrid.valueAt(new Point(x, y))), tableCell);
                 squareRow.push(square);
 //                if (square.hasFood()) {
 //                    this.foodPos = new Point(x, y);
@@ -87,3 +98,10 @@ AquariumField.move = function(direction) {
         this.playerPos =  playerSnake.snakeBody["0"].position;
     }
 };
+
+function characterFromElement(element) {
+    if (element == undefined)
+        return " ";
+    else
+        return element.character;
+}
