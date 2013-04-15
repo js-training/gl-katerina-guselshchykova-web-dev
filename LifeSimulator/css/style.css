@@ -1,0 +1,23 @@
+table.gameField {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border: 1px solid black;
+}
+
+table.gameField td {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+table.gameField tr {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+table.gameField td.empty {
+    background-image: url("../img/water.gif");
+}
