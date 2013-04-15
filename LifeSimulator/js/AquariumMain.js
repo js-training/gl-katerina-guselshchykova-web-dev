@@ -38,6 +38,7 @@ function Aquarium(plan) {
        var grid = new Grid(plan[0].length, plan.length);
        for (var y = 0; y < plan.length; y++) {
            var line = plan[y];
+           console.log("line = " + line);
            for (var x = 0; x < line.length; x++) {
                grid.setValueAt(new Point(x, y),
                    elementFromCharacter(line.charAt(x)));
@@ -54,12 +55,14 @@ Aquarium.prototype.render = function(place){
 function elementFromCharacter(character) {
         if (character == " ")  {
             return undefined;
-        } else if (character == "#")  {
-            return wall;
+        } else if (character == "*")  {
+            return new Wall();
         } else if (character == "%")       {
             return new Fish();
         } else if (character == "@")       {
             return new Snail();
+        } else if (character == "0")       {
+            return new Food();
         }
     }
 //var AquariumMain = function(place){

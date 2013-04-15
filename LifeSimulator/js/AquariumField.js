@@ -17,6 +17,7 @@ var AquariumField = function (aquariumGrid) {
 //};
         var endOfLine = aquariumGrid.width - 1;
 
+       console.log("W = " + aquariumGrid.width + " h = " + aquariumGrid.height);
         for (var y = 0; y < aquariumGrid.height; y++) {
             //var line = aquariumGrid[y];
             var tableRow = dom("TR");
@@ -100,8 +101,11 @@ AquariumField.move = function(direction) {
 };
 
 function characterFromElement(element) {
-    if (element == undefined)
+  //  console.log(element.character);
+    if (element == undefined) {
         return " ";
-    else
+    }
+    else {
         return element.character;
+    }
 }
