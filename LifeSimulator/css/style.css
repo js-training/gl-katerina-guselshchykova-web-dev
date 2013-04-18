@@ -21,3 +21,16 @@ table.gameField tr {
 table.gameField td.empty {
     background-image: url("../img/water.gif");
 }
+
+.statistics {
+    font: 16px sans-serif;
+    padding: 50px 0;
+}
+
+.statisticsItem {
+    margin: 30px 0;
+}
+
+.statisticsItem div {
+    margin: 0 50px;
+}

@@ -1,23 +1,27 @@
 var Square = function(character, tableCell) {
         this.background = "empty";
-        if (character === "#")    {
-            this.background = "wall";
-        } else if (character === "*")  {
-            this.background = "exit";
-        }
+//        if (character === "#")    {
+//            this.background = "wall";
+//        } else if (character === "*")  {
+//            this.background = "exit";
+//        }
 
         this.tableCell = tableCell;
         this.tableCell.className = this.background;
 
         this.content = null;
-        if (character === "0") {
+        if (character === CharactersEnum.FOOD) {
             this.content = "food";
-        } else if (character === "@")   {
+        } else if (character === CharactersEnum.SNAIL)   {
             this.content = "snail";
-        } else if (character === "*")   {
+        } else if (character === CharactersEnum.WALL)   {
             this.content = "wall";
-        } else if (character === "%")   {
+        }  else if (character === CharactersEnum.FISH)   {
             this.content = "fish";
+        } else if (character === CharactersEnum.SLOW_FISH)   {
+            this.content = "fish_2";
+        }  else if (character === CharactersEnum.PEARL)   {
+            this.content = "pearl";
         }
 
         if (this.content !== null) {

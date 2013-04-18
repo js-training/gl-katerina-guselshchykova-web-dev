@@ -17,7 +17,9 @@ Grid.prototype.moveValue = function(from, to) {
     this.setValueAt(to, this.valueAt(from));
     this.setValueAt(from, undefined);
 };
-
+Grid.prototype.deleteValue = function(value) {
+    this.setValueAt(value, undefined);
+};
 Grid.prototype.each = function(action) {
     for (var y = 0; y < this.height; y++) {
         for (var x = 0; x < this.width; x++) {
@@ -28,6 +30,10 @@ Grid.prototype.each = function(action) {
 };
 
 Grid.prototype.render = function(){
+    if (this.table != undefined) {
+        this.remove();
+    }
+
     var tbody = dom("TBODY", {"class": "gameField"});
     this.squares = [];
     var endOfLine =  this.width - 1;

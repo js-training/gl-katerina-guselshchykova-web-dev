@@ -48,8 +48,7 @@ AquariumField.move = function(direction) {
 };
 
 function characterFromElement(element) {
-  //  console.log(element.character);
-    if (element == undefined) {
+     if (element == undefined) {
         return " ";
     }
     else {
