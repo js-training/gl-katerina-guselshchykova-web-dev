@@ -5,7 +5,6 @@ function Animal(numberOfDirections, initEnergy, foodCalories, hungerLevel){
     this.energy = initEnergy;
     this.foodCalories = foodCalories;
     this.hungerLevel = hungerLevel;
-
 }
 
 Animal.prototype.act = function(surroundings) {

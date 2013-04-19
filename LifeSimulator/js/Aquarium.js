@@ -85,6 +85,7 @@ function makeAnimalsInformation(arrayAnimals, title, attrName){
     if (arrayAnimals.length > 1) {
         animalDiv = dom("DIV",  {"class": "statisticsItem"}, title + " : " + arrayAnimals.length);
         for (var i = 0; i < arrayAnimals.length; i++){
+            console.log(arrayAnimals[i].object);
             var animalInfo = "                # " + i + " " + attrName+ ": " + arrayAnimals[i].object.getEnergy();
             animalDiv.appendChild(dom("DIV", null, animalInfo));
         }
@@ -96,7 +97,7 @@ Aquarium.prototype.renderStatistics = function(){
     var blueFishes = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.SLOW_FISH), "Small blue fishes", "energy");
     var stripedFishes = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.FISH), "Striped fishes", "energy");
     var snails = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.SNAIL), "Snails", "energy");
-    var pears = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.PEARL), "Pearls (when age is 10 someone will be born)", "age");
+    var pears = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.PEARL), "Pearls (when age is 50 someone will be born)", "age");
 
     this.statistics = dom("DIV", {"class": "statistics"},
         dom("H1", null, "Aquarium"),
@@ -184,8 +185,12 @@ Aquarium.prototype.processCreature = function(creature) {
     }
 
     var food = this.arrayOfItems(CharactersEnum.FOOD);
-    while (food.length < 50) {
-        this.growFood(food);
+    if (food.length < 55) {
+        var length =  food.length;
+        while (length < 60) {
+            this.growFood(this.arrayOfItems(CharactersEnum.FOOD));
+            length++;
+        }
     }
 };
 
